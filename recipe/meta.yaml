@@ -19,7 +19,7 @@ build:
     - jupyter-serverextension = notebook.serverextensions:main
 
 requirements:
-  build:
+  host:
     - python
     - pip
   run:
