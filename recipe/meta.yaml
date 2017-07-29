@@ -21,7 +21,7 @@ build:
     - jupyter-bundlerextension = notebook.bundler.bundlerextensions:main
 
 requirements:
-  build:
+  host:
     - python
     - pip
   run:
