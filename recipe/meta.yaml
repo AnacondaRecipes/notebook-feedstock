@@ -9,9 +9,6 @@ source:
   sha256: 660976fe4fe45c7aa55e04bf4bccb9f9566749ff637e9020af3422f9921f9a5d
 
 build:
-  script:
-    - "{{ PYTHON }} -m pip install . --no-deps -vv"
-    - find {{ PREFIX }} -name '*.js.map' -delete  # [not win]
   number: 0
   entry_points:
     - jupyter-notebook = notebook.notebookapp:main
@@ -39,6 +36,18 @@ requirements:
     - tornado >=5.0,<7
     - traitlets >=4.2.1
     - prometheus_client
+
+app:
+  entry: jupyter-notebook  # [not osx]
+  entry: open ${PREFIX}/bin/jupyter_mac.command  # [osx]
+  icon: jupyter.png
+  summary: Jupyter Notebook
+  type: web
+  cli_opts:
+    - name: port
+      args: --port %s
+      default: 8080
+      summary: Server port ...
 
 test:
   commands:
