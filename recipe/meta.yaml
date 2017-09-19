@@ -11,8 +11,6 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  script:
-    - pip install --no-deps .
   number: 0
   entry_points:
     - jupyter-notebook = notebook.notebookapp:main
@@ -40,6 +38,18 @@ requirements:
     - traitlets >=4.2.1
     - prometheus_client
     - ipaddress  # [py2k]
+
+app:
+  entry: jupyter-notebook  # [not osx]
+  entry: open ${PREFIX}/bin/jupyter_mac.command  # [osx]
+  icon: jupyter.png
+  summary: Jupyter Notebook
+  type: web
+  cli_opts:
+    - name: port
+      args: --port %s
+      default: 8080
+      summary: Server port ...
 
 test:
   commands:
