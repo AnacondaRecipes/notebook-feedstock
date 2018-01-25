@@ -1,5 +1,5 @@
-{% set version = "5.2.2" %}
-{% set sha256 = "7bb54fb61b9c5426bc116f840541b973431198e00ea2896122d05fc122dbbd67" %}
+{% set version = "5.3.1" %}
+{% set sha256 = "380bbed63117accbb13e42d01d06153c72da6a386f75c81ae4c174eaa11e738b" %}
 
 package:
   name: notebook
@@ -30,6 +30,7 @@ requirements:
     - nbconvert
     - nbformat
     - python
+    - send2trash
     - terminado >=0.3.3  # [not win]
     - tornado >=4
     - traitlets >=4.3

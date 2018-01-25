@@ -1,6 +1,6 @@
 #!/bin/bash
 
-$PYTHON setup.py install
+pip install --no-deps .
 
 if [ `uname` == Darwin ]
 then

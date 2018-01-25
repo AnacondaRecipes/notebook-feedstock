@@ -7,7 +7,7 @@ if errorlevel 1 exit 1
 copy %RECIPE_DIR%\menu-windows.json %MENU_DIR%\notebook.json
 if errorlevel 1 exit 1
 
-%PYTHON% setup.py install
+pip install --no-deps .
 if errorlevel 1 exit 1
 
 rd /s /q %SCRIPTS%
