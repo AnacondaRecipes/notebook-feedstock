@@ -31,6 +31,7 @@ requirements:
     - nbconvert
     - nbformat
     - python
+    - pyzmq >=17
     - send2trash
     - terminado >=0.8.1
     - tornado >=4
