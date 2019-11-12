@@ -62,7 +62,7 @@ about:
   home: http://jupyter.org
   license: BSD 3-clause
   license_family: BSD
-  license_file: COPYING.md
+  license_file: LICENSE
   summary: A web-based notebook environment for interactive computing
   description: |
     Jupyter Notebook is a web application, a browser-based tool for interactive
