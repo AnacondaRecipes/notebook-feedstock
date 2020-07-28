@@ -1,0 +1,21 @@
+From ba0730db234a538700728007ef1018ae26d22c40 Mon Sep 17 00:00:00 2001
+From: Min RK <benjaminrk@gmail.com>
+Date: Thu, 18 Jul 2019 12:03:24 +0200
+Subject: [PATCH] add missing react-dom js to package data
+
+---
+ setupbase.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/setupbase.py b/setupbase.py
+index 9a4c394bbc..5a21cb5005 100644
+--- a/setupbase.py
++++ b/setupbase.py
+@@ -150,6 +150,7 @@ def find_package_data():
+         pjoin(components, "jquery-ui", "themes", "smoothness", "images", "*"),
+         pjoin(components, "marked", "lib", "marked.js"),
+         pjoin(components, "react", "react.production.min.js"),
++        pjoin(components, "react", "react-dom.production.min.js"),
+         pjoin(components, "requirejs", "require.js"),
+         pjoin(components, "requirejs-plugins", "src", "json.js"),
+         pjoin(components, "requirejs-text", "text.js"),
