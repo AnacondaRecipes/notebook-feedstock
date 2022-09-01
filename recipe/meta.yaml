@@ -10,7 +10,7 @@ source:
   sha256: 709b1856a564fe53054796c80e17a67262071c86bfbdfa6b96aaa346113c555a
 
 build:
-  number: 0
+  number: 1
   entry_points:
     - jupyter-notebook = notebook.notebookapp:main
     - jupyter-nbextension = notebook.nbextensions:main
