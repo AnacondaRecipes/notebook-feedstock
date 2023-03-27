@@ -1,6 +1,5 @@
 {% set name = "notebook" %}
-{% set version = "6.5.2" %}
-{% set min_nbclassic = "0.4.7" %}
+{% set version = "6.5.3" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: c1897e5317e225fc78b45549a6ab4b668e4c996fd03a04e938fe5e7af2bfffd0
+  sha256: b12bee3292211d85dd7e588a790ddce30cb3e8fbcfa1e803522a207f60819e05
 
 build:
   number: 0
@@ -22,8 +21,8 @@ build:
 requirements:
   host:
     - python
-    - jupyter-packaging
-    - nbclassic
+    - jupyter-packaging 0.12.0
+    - nbclassic 0.4.8
     - pip
     - setuptools
     - wheel
@@ -35,7 +34,7 @@ requirements:
     - jinja2
     - jupyter_client >=5.3.4
     - jupyter_core >=4.6.1
-    - nbclassic >={{ min_nbclassic }}
+    - nbclassic >=0.4.7
     - nbconvert >=5
     - nbformat
     - nest-asyncio >=1.5
@@ -62,7 +61,6 @@ test:
   requires:
     - pip
     - requests
-    - nbclassic >={{ min_nbclassic }}
   commands:
     - python -m pip check
     - jupyter notebook -h
