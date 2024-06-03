@@ -1,5 +1,5 @@
 {% set name = "notebook" %}
-{% set version = "6.5.4" %}
+{% set version = "6.5.7" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 517209568bd47261e2def27a140e97d49070602eea0d226a696f42a7f16c9a4e
+  sha256: 04eb9011dfac634fbd4442adaf0a8c27cd26beef831fe1d19faf930c327768e4
 
 build:
-  number: 1
+  number: 0
   skip: true  # [py<37]
   entry_points:
     - jupyter-notebook = notebook.notebookapp:main
@@ -39,7 +39,7 @@ requirements:
     - nbformat
     - nest-asyncio >=1.5
     - prometheus_client
-    - pyzmq >=17,<25
+    - pyzmq >=17
     - send2trash >=1.8.0
     - terminado >=0.8.3
     - tornado >=6.1
