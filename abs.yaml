@@ -1,4 +1,1 @@
 aggregate_check: False
-
-channels:
-  - https://staging.continuum.io/prefect/fs/nbclassic-feedstock/pr13/c838b4d
