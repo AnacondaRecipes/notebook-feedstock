@@ -10,10 +10,14 @@ source:
   sha256: 3957ecd956056b0014677afc76d3bb44c2d2f29649f87b24d13606ff1d18938f
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<38 or s390x]
   entry_points:
     - jupyter-notebook = notebook.app:main
+  # The menu file is either v1 or v2.
+  # Avoid linking to not overwrite menu file in pkgs directory.
+  no_link:
+    - 'Menu/{{ name }}_menu.json'
 
 requirements:
   host:
