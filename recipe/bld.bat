@@ -6,10 +6,7 @@ IF NOT EXIST %PREFIX%\Menu mkdir %PREFIX%\Menu
 copy %RECIPE_DIR%\menu-v1.json %PREFIX%\Menu\%PKG_NAME%_menu-v1.json.bak
 copy %RECIPE_DIR%\menu-v2.json %PREFIX%\Menu\%PKG_NAME%_menu-v2.json.bak
 copy %RECIPE_DIR%\menu-v2.json %PREFIX%\Menu\%PKG_NAME%_menu.json
-copy %RECIPE_DIR%\jupyter.ico %MENU_DIR%
-if errorlevel 1 exit 1
-
-copy %RECIPE_DIR%\menu-windows.json %MENU_DIR%\notebook.json
+copy %RECIPE_DIR%\jupyter.ico %PREFIX%\Menu\
 if errorlevel 1 exit 1
 
 %PYTHON% -m pip install . --no-deps --no-build-isolation -vv
