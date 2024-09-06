@@ -1,20 +1,21 @@
 {% set name = "notebook" %}
-{% set version = "7.0.8" %}
+{% set version = "7.2.2" %}
+{% set lab_version = ">=4.2.0,<4.3" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/notebook-{{ version }}.tar.gz
-  sha256: 3957ecd956056b0014677afc76d3bb44c2d2f29649f87b24d13606ff1d18938f
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 2ef07d4220421623ad3fe88118d687bc0450055570cdd160814a59cf3a1c516e
 
 build:
   # This build number has not been published.
   # It is used to reset the state of the repository
   # after reverting menuinst2 integration.
   # See PR 38
-  number: 2
+  number: 0
   skip: true  # [py<38 or s390x]
   entry_points:
     - jupyter-notebook = notebook.app:main
@@ -24,13 +25,13 @@ requirements:
     - python
     - hatchling >=1.11
     - hatch-jupyter-builder >=0.5
-    - jupyterlab >=4.0.2,<4.1
+    - jupyterlab {{ lab_version }}
     - pip
   run:
     - python
     - jupyter_server >=2.4.0,<3
-    - jupyterlab >=4.0.2,<4.1
-    - jupyterlab_server >=2.22.1,<3
+    - jupyterlab {{ lab_version }}
+    - jupyterlab_server >=2.27.1,<3
     - notebook-shim >=0.2,<0.3
     - tornado >=6.2.0
 
@@ -47,25 +48,25 @@ app:
       summary: Server port ...
 
 test:
+  imports:
+    - notebook
   requires:
     - pip
     - ripgrep
   commands:
-    - python -m pip check
+    - pip check
     - jupyter notebook -h
     - jupyter-notebook -h
     - jupyter labextension list
     - jupyter labextension list 1>labextensions 2>&1
     - cat labextensions | rg "@jupyter-notebook/lab-extension.*OK"  # [not win]
     - type labextensions | rg "@jupyter-notebook/lab-extension.*ok"  # [win]
-  imports:
-    - notebook
 
 about:
   home: https://jupyter.org
   license: BSD-3-Clause
   license_family: BSD
-  license_file: 
+  license_file:
     - LICENSE
     - notebook/labextension/static/third-party-licenses.json
     - notebook/static/third-party-licenses.json
