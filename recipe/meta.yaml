@@ -11,14 +11,12 @@ source:
   sha256: 2ef07d4220421623ad3fe88118d687bc0450055570cdd160814a59cf3a1c516e
 
 build:
-  # This build number has not been published.
-  # It is used to reset the state of the repository
-  # after reverting menuinst2 integration.
-  # See PR 38
-  number: 0
+  number: 1
   skip: true  # [py<38 or s390x]
   entry_points:
     - jupyter-notebook = notebook.app:main
+  no_link:
+    - 'Menu/{{ name }}_menu.json'
 
 requirements:
   host:
