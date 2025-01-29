@@ -1,6 +1,5 @@
 {% set name = "notebook" %}
-{% set version = "7.2.2" %}
-{% set lab_version = ">=4.2.0,<4.3" %}
+{% set version = "7.3.2" %}
 
 package:
   name: {{ name|lower }}
@@ -8,10 +7,10 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 2ef07d4220421623ad3fe88118d687bc0450055570cdd160814a59cf3a1c516e
+  sha256: 705e83a1785f45b383bf3ee13cb76680b92d24f56fb0c7d2136fe1d850cd3ca8
 
 build:
-  number: 1
+  number: 0
   skip: true  # [py<38 or s390x]
   entry_points:
     - jupyter-notebook = notebook.app:main
@@ -23,15 +22,15 @@ requirements:
     - python
     - hatchling >=1.11
     - hatch-jupyter-builder >=0.5
-    - jupyterlab {{ lab_version }}
+    - jupyterlab >=4.3.4,<4.4
     - pip
   run:
     - python
     - jupyter_server >=2.4.0,<3
-    - jupyterlab {{ lab_version }}
-    - jupyterlab_server >=2.27.1,<3
+    - jupyterlab >=4.3.4,<4.4
     - notebook-shim >=0.2,<0.3
     - tornado >=6.2.0
+    - jupyterlab_server >=2.27.1,<3
 
 app:
   entry: jupyter-notebook                        # [not osx]
