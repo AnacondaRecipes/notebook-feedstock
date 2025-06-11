@@ -5,17 +5,17 @@ REM menu file so that conda picks it up when running menuinst.
 SET "MENU_DIR=%PREFIX%\Menu"
 IF NOT EXIST "%MENU_DIR%" MKDIR "%MENU_DIR%"
 if errorlevel 1 exit 1
-copy "%RECIPE_DIR%\menu-v1.json" "%PREFIX%\Menu\%PKG_NAME%_menu-v1.json.bak"
+copy "%RECIPE_DIR%\menu-v1.json" "%MENU_DIR%\%PKG_NAME%_menu-v1.json.bak"
 if errorlevel 1 exit 1
-copy "%RECIPE_DIR%\menu-v2.json" "%PREFIX%\Menu\%PKG_NAME%_menu-v2.json.bak"
+copy "%RECIPE_DIR%\menu-v2.json" "%MENU_DIR%\%PKG_NAME%_menu-v2.json.bak"
 if errorlevel 1 exit 1
-copy "%RECIPE_DIR%\menu-v2.json" "%PREFIX%\Menu\%PKG_NAME%_menu.json"
+copy "%RECIPE_DIR%\menu-v2.json" "%MENU_DIR%\%PKG_NAME%_menu.json"
 if errorlevel 1 exit 1
 copy "%RECIPE_DIR%\jupyter.ico" "%MENU_DIR%\jupyter.ico"
 if errorlevel 1 exit 1
 
-%PYTHON% -m pip install . --no-deps --no-build-isolation -vv
+"%PYTHON%" -m pip install . --no-deps --no-build-isolation -vv
 
 if errorlevel 1 exit 1
 
-rd /s /q %SCRIPTS%
+rd /s /q "%SCRIPTS%"
