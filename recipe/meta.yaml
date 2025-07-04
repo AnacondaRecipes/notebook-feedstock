@@ -56,8 +56,8 @@ test:
     - jupyter-notebook -h
     - jupyter labextension list
     - jupyter labextension list 1>labextensions 2>&1
-    - "cat labextensions | rg \"@jupyter-notebook/lab-extension.*OK\""  # [not win]
-    - "type labextensions | rg \"@jupyter-notebook/lab-extension.*ok\""  # [win]
+    - cat labextensions | rg "@jupyter-notebook/lab-extension.*OK"  # [not win]
+    - type labextensions | rg "@jupyter-notebook/lab-extension.*ok"  # [win]
 
 about:
   home: https://jupyter.org
