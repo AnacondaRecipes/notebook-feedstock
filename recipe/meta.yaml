@@ -1,5 +1,5 @@
 {% set name = "notebook" %}
-{% set version = "7.4.4" %}
+{% set version = "7.4.5" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 392fd501e266f2fb3466c6fcd3331163a2184968cb5c5accf90292e01dfe528c
+  sha256: 7c2c4ea245913c3ad8ab3e5d36b34a842c06e524556f5c2e1f5d7d08c986615e
 
 build:
   number: 0
@@ -20,10 +20,11 @@ build:
 requirements:
   host:
     - python
-    - hatch-jupyter-builder >=0.5
-    - jupyterlab >=4.4.4,<4.5
     - pip
     - hatchling >=1.11
+    - hatch-jupyter-builder >=0.5
+    - jupyterlab >=4.4.4,<4.5
+    - httpx >=0.25.0,<1.0.0
   run:
     - python
     - jupyter_server >=2.4.0,<3
