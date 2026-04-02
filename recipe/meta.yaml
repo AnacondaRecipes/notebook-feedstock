@@ -1,5 +1,5 @@
 {% set name = "notebook" %}
-{% set version = "7.5.3" %}
+{% set version = "7.5.5" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 393ceb269cf9fdb02a3be607a57d7bd5c2c14604f1818a17dbeb38e04f98cbfa
+  sha256: dc0bfab0f2372c8278c457423d3256c34154ac2cc76bf20e9925260c461013c3
 
 build:
   number: 0
@@ -23,11 +23,11 @@ requirements:
     - pip
     - hatchling >=1.11
     - hatch-jupyter-builder >=0.5
-    - jupyterlab >=4.5.3,<4.6
+    - jupyterlab >=4.5.6,<4.6
   run:
     - python
     - jupyter_server >=2.4.0,<3
-    - jupyterlab >=4.5.3,<4.6
+    - jupyterlab >=4.5.6,<4.6
     - jupyterlab_server >=2.28.0,<3
     - notebook-shim <0.3,>=0.2
     - tornado >=6.2.0
@@ -45,11 +45,24 @@ app:
       summary: Server port ...
 
 test:
+  source_files:
+    - tests
+    - pyproject.toml
   imports:
     - notebook
   requires:
     - pip
     - ripgrep
+    - pytest >=7.0
+    - pytest-jupyter
+    - requests
+    - pytest-tornasync
+    - pytest-timeout
+    - pytest-console-scripts
+    - ipykernel
+    - jupyter_server >=2.4.0,<3
+    - jupyterlab_server >=2.28.0,<3
+    - importlib_resources >=5.0  # [py<310]
   commands:
     - pip check
     - jupyter notebook -h
@@ -58,6 +71,7 @@ test:
     - jupyter labextension list 1>labextensions 2>&1
     - cat labextensions | rg "@jupyter-notebook/lab-extension.*OK"  # [not win]
     - type labextensions | rg "@jupyter-notebook/lab-extension.*ok"  # [win]
+    - pytest -ra -v
 
 about:
   home: https://github.com/jupyter/notebook

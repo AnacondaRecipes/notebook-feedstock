@@ -23,8 +23,8 @@
                     "quicklaunch": false,
                     "app_user_model_id": "anaconda.Jupyter.{{ DISTRIBUTION_NAME }}.{{ ENV_NAME }}"
                 },
-                "linux": null,
-                "osx": null
+                "linux": {},
+                "osx": {}
             }
         }
     ]
